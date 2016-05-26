@@ -1,0 +1,18 @@
+{
+  "name": "opening-hours-kata",
+  "version": "0.0.1",
+  "author": "Alessio Coser <alessio.coser@xpeppers.com>",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha opening_hours_test.js"
+  },
+  "main": "opening_hours.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlessioCoser/opening-hours-kata"
+  },
+  "dependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "to-iso-string": "*"
+  }
+}
