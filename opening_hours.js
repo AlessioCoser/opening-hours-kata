@@ -3,5 +3,9 @@ module.exports = {
 };
 
 function isOpenOn(day) {
-  return true;
+  var date = new Date(day);
+  if ([1,3,5].indexOf(date.getDay()) !== -1) {
+    return true;
+  }
+  return false;
 }
