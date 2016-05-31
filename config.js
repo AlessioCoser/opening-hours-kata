@@ -9,5 +9,5 @@ const DAYS = {
 };
 
 module.exports = {
-  "opening_days": [DAYS.MONDAY, DAYS.WEDNESDAY, DAYS.FRIDAY]
+  openingDays: [DAYS.MONDAY, DAYS.WEDNESDAY, DAYS.FRIDAY],
 }
