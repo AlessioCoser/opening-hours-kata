@@ -20,7 +20,7 @@ function nextOpeningDate(date) {
 
 function isOpenOn(date) {
   if (opening.days.indexOf(date.getDay()) !== -1) {
-    if((date.getTime() > openingTimeFor(date)) && (date.getTime() < closingTimeFor(date))) {
+    if((date.getTime() >= openingTimeFor(date)) && (date.getTime() < closingTimeFor(date))) {
       return true;
     }
   }
