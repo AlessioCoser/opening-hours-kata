@@ -7,15 +7,13 @@ module.exports = {
 };
 
 function nextOpeningDate(date) {
-  do {
-    date.setDate(date.getDate() + 1);
-  }while (!isOpenOn(date))
+  date.setDate(date.getDate() + 1);
 
-  date.setUTCHours(opening.from.hours);
-  date.setUTCMinutes(opening.from.minutes);
-  date.setSeconds(0);
-  date.setMilliseconds(0);
-  return date;
+  if (!isOpenOn(date)) {
+    return nextOpeningDate(date);
+  }
+
+  return changeTime(date, config.opening.from.hours, config.opening.from.minutes);
 }
 
 function isOpenOn(date) {
@@ -28,15 +26,20 @@ function isOpenOn(date) {
 }
 
 function openingTimeFor(date){
-  var openingTime = new Date(date.getTime());
-  openingTime.setUTCHours(config.opening.from.hours);
-  openingTime.setUTCMinutes(config.opening.from.minutes);
-  return openingTime.getTime();
+  var dateTime = changeTime(date, config.opening.from.hours, config.opening.from.minutes);
+  return dateTime.getTime();
 }
 
 function closingTimeFor(date){
-  var closingTime = new Date(date.getTime());
-  closingTime.setUTCHours(config.opening.to.hours);
-  closingTime.setUTCMinutes(config.opening.to.minutes);
-  return closingTime.getTime();
+  var dateTime = changeTime(date, config.opening.to.hours, config.opening.to.minutes);
+  return dateTime.getTime();
+}
+
+function changeTime(date, hours, minutes) {
+  var dateTime = new Date(date.getTime());
+  dateTime.setUTCHours(hours);
+  dateTime.setUTCMinutes(minutes);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+  return dateTime;
 }
