@@ -12,4 +12,10 @@ describe('Is open on', function() {
   it('Shop is not open on thursday', function() {
     expect(shop.isOpenOn(THURSDAY)).to.eql(false);
   });
+  it('Shop is not open on thursday until 7:59', function() {
+    expect(shop.isOpenOn(THURSDAY)).to.eql(false);
+  });
+  it('Shop is not open on thursday from 16:01', function() {
+    expect(shop.isOpenOn(THURSDAY)).to.eql(false);
+  });
 });
