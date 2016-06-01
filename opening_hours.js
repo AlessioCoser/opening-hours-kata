@@ -1,5 +1,4 @@
-var config = require("./config");
-var opening = config.opening;
+var opening = require("./config").opening;
 
 module.exports = {
   isOpenOn,
@@ -12,27 +11,24 @@ function nextOpeningDate(date) {
   if (!isOpenOn(date)) {
     return nextOpeningDate(date);
   }
-
-  return changeTime(date, config.opening.from.hours, config.opening.from.minutes);
+  return changeTime(date, opening.from.hours, opening.from.minutes);
 }
 
 function isOpenOn(date) {
-  if (opening.days.indexOf(date.getDay()) !== -1) {
-    if((date.getTime() >= openingTimeFor(date)) && (date.getTime() < closingTimeFor(date))) {
-      return true;
-    }
+  if (isOpeningDay(date) && isOpeningTime(date)) {
+    return true;
   }
   return false;
 }
 
-function openingTimeFor(date){
-  var dateTime = changeTime(date, config.opening.from.hours, config.opening.from.minutes);
-  return dateTime.getTime();
+function isOpeningDay(date) {
+  return opening.days.indexOf(date.getDay()) !== -1;
 }
 
-function closingTimeFor(date){
-  var dateTime = changeTime(date, config.opening.to.hours, config.opening.to.minutes);
-  return dateTime.getTime();
+function isOpeningTime(date) {
+  var openingTime = changeTime(date, opening.from.hours, opening.from.minutes);
+  var closingTime = changeTime(date, opening.to.hours, opening.to.minutes);
+  return (date.getTime() >= openingTime.getTime()) && (date.getTime() < closingTime.getTime());
 }
 
 function changeTime(date, hours, minutes) {
