@@ -1,10 +1,12 @@
 class OpeningHours {
-  constructor (config = {}) {
-    this.config = config
+  constructor (openDays) {
+    this.openDays = openDays || []
   }
 
-  isOpenOn () {
-    return false
+  isOpenOn (date) {
+    var day = date.getDay()
+
+    return this.openDays.some((openDay) => day === openDay)
   }
 }
 
