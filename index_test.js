@@ -17,6 +17,12 @@ describe('OpeningHours', () => {
   describe('#IsOpenOn', () => {
     let openDays = [1, 3, 5]
 
+    it('Without day returns false', () => {
+      let openingHours = new OpeningHours(openDays)
+
+      equal(false, openingHours.isOpenOn(null))
+    })
+
     it('Wednesday', () => {
       let openingHours = new OpeningHours(openDays)
 
