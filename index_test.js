@@ -23,7 +23,7 @@ describe('OpeningHours', () => {
       equal(false, openingHours.isOpenOn(null))
     })
 
-    it('Wednesday', () => {
+    it('correct days to check', () => {
       let openingHours = new OpeningHours(openDays)
 
       equal(true, openingHours.isOpenOn(wednesday))
