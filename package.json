@@ -1,0 +1,29 @@
+{
+  "name": "opening-hours-kata",
+  "version": "1.0.0",
+  "description": "Opening Hours Kata",
+  "main": "index_test.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  },
+  "scripts": {
+    "test": "mocha ./**/*_test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlessioCoser/opening-hours-kata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlessioCoser/opening-hours-kata/issues"
+  },
+  "homepage": "https://github.com/AlessioCoser/opening-hours-kata#readme",
+  "standard": {
+    "globals": [
+      "describe",
+      "it"
+    ]
+  }
+}
