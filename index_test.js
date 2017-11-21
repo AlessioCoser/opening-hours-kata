@@ -12,6 +12,12 @@ describe('OpeningHours', () => {
       equal(false, openingHours.isOpenOn(wednesday))
       equal(false, openingHours.isOpenOn(thursday))
     })
+
+    it('has never a next opening date', () => {
+      let openingHours = new OpeningHours(null)
+
+      equal(null, openingHours.nextOpeningDate(wednesday))
+    })
   })
 
   describe('#IsOpenOn', () => {

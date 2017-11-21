@@ -22,6 +22,10 @@ class OpeningHours {
 
     return this.openDays.some((openDay) => day === openDay)
   }
+
+  nextOpeningDate (date) {
+    return null
+  }
 }
 
 module.exports = {
