@@ -47,7 +47,7 @@ class OpeningHours {
 
     date.setDate(date.getDate() + diffWeekDay)
 
-    return new Date(date.getTime())
+    return date
   }
 
   _addOneWeek (openDate) {
