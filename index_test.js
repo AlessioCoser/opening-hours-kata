@@ -1,15 +1,5 @@
 const { equal } = require('assert')
-const OpeningHours = require('./index')
-
-const DAYS = {
-  'sunday': 0,
-  'monday': 1,
-  'tuesday': 2,
-  'wednesday': 3,
-  'thursday': 4,
-  'friday': 5,
-  'saturday': 6
-}
+const { OpeningHours, WEEKDAYS } = require('./index')
 
 describe('OpeningHours', () => {
   let wednesday = new Date('2016-05-11T12:22:11.824Z')
@@ -25,7 +15,11 @@ describe('OpeningHours', () => {
   })
 
   describe('#IsOpenOn', () => {
-    let openDays = [DAYS['monday'], DAYS['wednesday'], DAYS['friday']]
+    let openDays = [
+      WEEKDAYS['monday'],
+      WEEKDAYS['wednesday'],
+      WEEKDAYS['friday']
+    ]
 
     it('Without day returns false', () => {
       let openingHours = new OpeningHours(openDays)
