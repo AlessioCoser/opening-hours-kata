@@ -28,9 +28,14 @@ class OpeningHours {
       return null
     }
 
-    let openingDates = this.openDays
+    let currWeekOpeningDates = this.openDays
       .map((openWeekDay) => this._setDateFrom(openWeekDay, new Date(date.getTime())))
-      .filter((openDates) => openDates > date)
+
+    let nextWeekOpeningDates = currWeekOpeningDates
+      .map((openDate) => this._addOneWeek(new Date(openDate.getTime())))
+
+    let openingDates = currWeekOpeningDates.concat(nextWeekOpeningDates)
+      .filter((openDate) => openDate > date)
 
     return openingDates[0]
   }
@@ -43,6 +48,14 @@ class OpeningHours {
     date.setDate(date.getDate() + diffWeekDay)
 
     return new Date(date.getTime())
+  }
+
+  _addOneWeek (openDate) {
+    let oneWeek = 7
+
+    openDate.setDate(openDate.getDate() + oneWeek)
+
+    return openDate
   }
 }
 

@@ -2,8 +2,8 @@ const { equal, notEqual } = require('assert')
 const { OpeningHours, WEEKDAYS } = require('./index')
 
 describe('OpeningHours', () => {
-  let wednesday = new Date('2016-05-11T12:22:11.824Z')
-  let thursday = new Date('2016-05-12T12:22:11.824Z')
+  let wednesday = new Date('2016-05-11T00:00:00.000Z')
+  let thursday = new Date('2016-05-12T00:00:00.000Z')
   let openDays = [
     WEEKDAYS.Monday,
     WEEKDAYS.Wednesday
@@ -40,7 +40,7 @@ describe('OpeningHours', () => {
   })
 
   describe('#nextOpeningDate', () => {
-    let tuesday = new Date('2016-05-10T12:22:11.824Z')
+    let tuesday = new Date('2016-05-10T00:00:00.000Z')
 
     it('returns the next open date', () => {
       let openingHours = new OpeningHours(openDays)
@@ -48,9 +48,17 @@ describe('OpeningHours', () => {
       let nextOpeningDate = openingHours.nextOpeningDate(tuesday)
 
       notEqual(null, nextOpeningDate)
-      equal(wednesday.getDate(), nextOpeningDate.getDate())
-      equal(wednesday.getMonth(), nextOpeningDate.getMonth())
-      equal(wednesday.getFullYear(), nextOpeningDate.getFullYear())
+      equal(wednesday.toUTCString(), nextOpeningDate.toUTCString())
+    })
+
+    it('returns the next week open date', () => {
+      let nextMonday = new Date('2016-05-16T00:00:00.000Z')
+      let openingHours = new OpeningHours(openDays)
+
+      let nextOpeningDate = openingHours.nextOpeningDate(thursday)
+
+      notEqual(null, nextOpeningDate)
+      equal(nextMonday.toUTCString(), nextOpeningDate.toUTCString())
     })
   })
 })
