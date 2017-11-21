@@ -24,7 +24,25 @@ class OpeningHours {
   }
 
   nextOpeningDate (date) {
-    return null
+    if (this.openDays.length === 0) {
+      return null
+    }
+
+    let openingDates = this.openDays
+      .map((openWeekDay) => this._setDateFrom(openWeekDay, new Date(date.getTime())))
+      .filter((openDates) => openDates > date)
+
+    return openingDates[0]
+  }
+
+  _setDateFrom (weekDay, date) {
+    var currentWeekDay = date.getDay()
+
+    var diffWeekDay = weekDay - currentWeekDay
+
+    date.setDate(date.getDate() + diffWeekDay)
+
+    return new Date(date.getTime())
   }
 }
 
