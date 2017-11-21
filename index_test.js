@@ -22,9 +22,9 @@ describe('OpeningHours', () => {
 
   describe('#IsOpenOn', () => {
     let openDays = [
-      WEEKDAYS['monday'],
-      WEEKDAYS['wednesday'],
-      WEEKDAYS['friday']
+      WEEKDAYS.Monday,
+      WEEKDAYS.Wednesday,
+      WEEKDAYS.Friday
     ]
 
     it('Without day returns false', () => {
